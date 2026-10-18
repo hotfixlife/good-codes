@@ -66,7 +66,7 @@ const PENDING_FOR = 24 * 3600 * 1000; // a copied code is asked about for up to 
 
 // Only the address is looked at (never the page). Cart/checkout pages get the banner; an order
 // confirmation page is the moment to ask "did it work?".
-const CHECKOUT_PATH = /\/(cart|basket|bag|checkouts?|order|payment|shipping|billing)(\/|$)/i;
+const CHECKOUT_PATH = /\/(cart|basket|bag|checkouts?|order|payment|shipping|billing)(\/|$|\.)/i;
 const CONFIRMATION_PATH = /(thank[-_]?you|thanks|order[-_]?(confirmation|received|complete|success)|confirmation|receipt|\/success|\/orders\/)/i;
 // Going to these mid-checkout isn't "leaving the shop".
 const PAYMENT_HOSTS = /(^|\.)(paypal\.com|shop\.app|shopify\.com|stripe\.com|klarna\.com|afterpay\.com|clearpay\.co\.uk|affirm\.com|sezzle\.com|zip\.co|pay\.google\.com|pay\.amazon\.com|adyen\.com|checkout\.com|braintreegateway\.com|cardinalcommerce\.com|arcot\.com|paddle\.com|3dsecure\.io)$/i;

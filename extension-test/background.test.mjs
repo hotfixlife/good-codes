@@ -90,6 +90,11 @@ test("banner on a shop's cart page, once per tab, with only confirmed or shop-pu
   assert.deepEqual(state.injected[0].codes.map((c) => c.code), ["SAVE15", "SHOP10"]);
 });
 
+test("cart pages ending in .html count too", async () => {
+  await update(1, { status: "complete" }, "https://shop.com/bag.html"); await settle();
+  assert.equal(state.injected.length, 1);
+});
+
 test("no banner on a shop's other pages, or on other sites", async () => {
   await update(1, { status: "complete" }, "https://shop.com/"); await settle();
   await update(1, { status: "complete" }, "https://shop.com/products/socks"); await settle();

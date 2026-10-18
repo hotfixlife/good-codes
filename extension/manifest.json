@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Good Codes",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Promo codes other shoppers say actually work. Copy one at checkout, then tell us if it worked.",
   "permissions": ["storage", "alarms", "declarativeContent", "activeTab", "scripting"],
   "optional_permissions": ["notifications"],
