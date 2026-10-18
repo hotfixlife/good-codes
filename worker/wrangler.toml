@@ -1,0 +1,18 @@
+name = "goodcodes"
+main = "src/index.js"
+compatibility_date = "2025-09-01"
+
+# Site files, built by ../build.mjs. Requests outside /api/ are served from here.
+[assets]
+directory = "./public"
+binding = "ASSETS"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "fairshare"
+# Created as "fairshare" before the rename to Good Codes (hotfixlife Cloudflare account); D1 names are fixed.
+database_id = "bb7e54b7-92c1-4321-83c1-9e5e99cb8535"
+
+# Daily cleanup: rate-limit records after 2 days, votes after 30 days.
+[triggers]
+crons = ["17 4 * * *"]

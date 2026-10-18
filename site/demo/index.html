@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Good Codes demo checkout</title>
+<style>
+  body { margin:0; font:16px/1.5 system-ui,sans-serif; background:#f4f4f4; color:#222; }
+  .wrap { max-width:520px; margin:24px auto; background:#fff; border-radius:10px; padding:20px; }
+  h1 { font-size:20px; margin:0 0 4px; } .note { color:#777; font-size:13px; margin:0 0 16px; }
+  .line, .sum { display:flex; justify-content:space-between; padding:6px 0; }
+  .sum.total { font-weight:700; font-size:18px; border-top:1px solid #ddd; margin-top:6px; padding-top:10px; }
+  form { display:flex; gap:8px; margin:14px 0 4px; }
+  input { flex:1; min-width:0; padding:9px 10px; border:1px solid #ccc; border-radius:6px; font:inherit; }
+  #summary-toggle { width:100%; text-align:left; background:#eee; color:#222; margin-bottom:10px; }
+  button { padding:9px 14px; border:0; border-radius:6px; background:#333; color:#fff; font:inherit; cursor:pointer; }
+  .err { color:#b42318; font-size:14px; min-height:1.2em; margin:0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Demo Shop</h1>
+  <p class="note">A pretend checkout for trying Good Codes. Nothing is for sale. With the extension installed, its toolbar icon turns green here: click it, copy a code, and paste it below.</p>
+  <button type="button" id="summary-toggle" aria-expanded="false" aria-controls="summary" hidden>Order summary · <span id="toggle-total">$120.00</span></button>
+  <div id="summary">
+  <div class="line"><span>Trail runners</span><span>$89.00</span></div>
+  <div class="line"><span>Socks ×2</span><span>$24.00</span></div>
+  <form id="disc">
+    <input id="discount" name="discount" placeholder="Discount code or gift card" aria-label="Discount code">
+    <button type="submit">Apply</button>
+  </form>
+  <p class="err" id="err"></p>
+  <div class="sum"><span>Subtotal</span><span id="subtotal">$113.00</span></div>
+  <div class="sum" id="disc-row" hidden><span>Discount <span id="disc-code"></span></span><span id="disc-amt"></span></div>
+  <div class="sum"><span>Shipping</span><span>$7.00</span></div>
+  <div class="sum total"><span>Total</span><span id="total">$120.00</span></div>
+  </div>
+</div>
+<script>
+  const SUBTOTAL = 113, SHIPPING = 7;
+  const CODES = { SAVE15: (s) => s * 0.15, WELCOME10: (s) => s * 0.10, SUMMER5: () => 5 };
+  const fmt = (n) => "$" + n.toFixed(2);
+  function render(code) {
+    const off = code ? Math.round(CODES[code](SUBTOTAL) * 100) / 100 : 0;
+    document.getElementById("disc-row").hidden = !code;
+    document.getElementById("disc-code").textContent = code ? "(" + code + ")" : "";
+    document.getElementById("disc-amt").textContent = "−" + fmt(off);
+    document.getElementById("total").textContent = fmt(SUBTOTAL - off + SHIPPING);
+    document.getElementById("toggle-total").textContent = fmt(SUBTOTAL - off + SHIPPING);
+  }
+
+  // ?layout=mobile: the summary (with the code box) starts collapsed, like phone-width checkouts.
+  if (new URLSearchParams(location.search).get("layout") === "mobile") {
+    const toggle = document.getElementById("summary-toggle"), summary = document.getElementById("summary");
+    toggle.hidden = false;
+    summary.hidden = true;
+    toggle.addEventListener("click", () => {
+      const open = toggle.getAttribute("aria-expanded") !== "true";
+      toggle.setAttribute("aria-expanded", String(open));
+      summary.hidden = !open;
+    });
+  }
+  document.getElementById("disc").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const code = document.getElementById("discount").value.trim().toUpperCase();
+    const err = document.getElementById("err");
+    err.textContent = "";
+    setTimeout(() => {  // like a real checkout, the server takes a moment
+      if (CODES[code]) render(code); else err.textContent = "Enter a valid discount code";
+    }, 600);
+  });
+</script>
+</body>
+</html>

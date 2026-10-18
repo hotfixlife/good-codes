@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Good Codes privacy</title>
+<link rel="stylesheet" href="/style.css">
+<link rel="icon" href="/icon.png">
+</head>
+<body>
+<div class="wrap">
+  <header><a href="/" style="display:flex;gap:10px;align-items:center;color:inherit;text-decoration:none"><img src="/icon.png" alt="" width="28" height="28"> Good Codes</a></header>
+  <h1>Privacy</h1>
+  <p class="lede">Short version: the only sites Good Codes ever sends us are shops on its list, and it doesn't know who you are.</p>
+
+  <section>
+    <h2>What the extension can see</h2>
+    <p><strong>With alerts off:</strong> nothing about the sites you visit. It hands Chrome a list of shops with codes, and Chrome itself turns the icon green on them. Only when you click the icon does Chrome let it see the address of that one tab, at that moment.</p>
+    <p><strong>With alerts on</strong> (you choose this, and Chrome asks you to allow it): it sees the address of each site you visit so it can check it against the shop list <em>on your computer</em>. Addresses of other sites aren't stored or sent. When you open a cart or checkout page on a listed shop, it sends that shop's name to get its codes.</p>
+    <p>After you copy a code, it remembers the shop and the page's path (not the full address) on your computer for up to a day, so it can ask whether the code worked.</p>
+    <p>Either way, it never reads the pages themselves: not your basket, your details or the order total. The only thing it ever adds to a page is its own banner.</p>
+  </section>
+
+  <section>
+    <h2>What gets sent to our server</h2>
+    <table>
+      <tr><th>When</th><th>What</th></tr>
+      <tr><td>Installing, and every 6 hours after</td><td>A request for the list of shops with codes. Nothing about you or your browsing.</td></tr>
+      <tr><td>You click the icon</td><td>The name of the site you're on (for example <code>allbirds.com</code>), to fetch its codes.</td></tr>
+      <tr><td>With alerts on, you open a listed shop's cart or checkout</td><td>That shop's name, to fetch its codes. Which shops are listed is decided by our server.</td></tr>
+      <tr><td>You say 👍 / 👎 about a code</td><td>The shop's name, the code, and your answer.</td></tr>
+      <tr><td>You share a code</td><td>The shop's name and the code.</td></tr>
+    </table>
+    <p>Like any website, our server sees your IP address when the extension talks to it. Votes and shared codes carry a random install ID made by the extension, so one install's votes count once. To stop people faking votes, the server also keeps a scrambled (salted and hashed) version of your network, meaning the first part of your IP address, never the full address: for two days for rate limits, and with your votes for 30 days so each network's vote counts once.</p>
+  </section>
+
+  <section>
+    <h2>What we never do</h2>
+    <p>Sell or share data with anyone. Track you across sites. Touch affiliate links or cookies. Show ads.</p>
+  </section>
+
+  <section>
+    <h2>How long things are kept</h2>
+    <p>Codes and votes are stored on Cloudflare (our hosting provider). Nothing stored includes your name, email or full IP address, but your votes are linked to your install ID, so they're "pseudonymous" rather than anonymous. Votes are deleted after 30 days, and rate-limit records after two days. Uninstalling the extension throws away its install ID.</p>
+    <p>Shared codes stay listed for others (that's the point).</p>
+    <p class="muted">Good Codes is an early test, and this page will change as it does. Last updated 18 October 2026.</p>
+  </section>
+
+  <footer><a href="/">Back to Good Codes</a> · <a href="/security">Security</a> · <a href="https://github.com/hotfixlife/good-codes">Source code</a></footer>
+</div>
+</body>
+</html>

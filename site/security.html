@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Good Codes security</title>
+<link rel="stylesheet" href="/style.css">
+<link rel="icon" href="/icon.png">
+</head>
+<body>
+<div class="wrap">
+  <header><a href="/" style="display:flex;gap:10px;align-items:center;color:inherit;text-decoration:none"><img src="/icon.png" alt="" width="28" height="28"> Good Codes</a></header>
+  <h1>How it's built, and what it can and can't do</h1>
+  <p class="lede">Browser extensions can be powerful. This one is deliberately not, so here's exactly what you're installing. Every line is <a href="https://github.com/hotfixlife/good-codes">published on GitHub</a>.</p>
+
+  <section>
+    <h2>What you're installing</h2>
+    <p>A small extension: about 650 lines in total (code and page layout), with no third-party libraries. Chrome's current extension rules (Manifest V3) don't let an extension download new code to run, so everything it can ever do is in the files you install.</p>
+    <p>It never reads web pages. The only thing it ever adds to a page is its own banner, only on listed shops' cart and checkout pages, and only if you've turned alerts on.</p>
+  </section>
+
+  <section>
+    <h2>The permissions it asks for</h2>
+    <p>None of the basic permissions give it access to your data. Installed from the Chrome Web Store, Chrome shows no warnings for them. (Installing from the zip skips Chrome's permission prompt altogether.)</p>
+    <table>
+      <tr><th>Permission</th><th>What it allows</th></tr>
+      <tr><td>Declarative content</td><td>Hands Chrome the list of shops so <em>Chrome</em> can turn the icon green on them. The extension isn't told which page you're on.</td></tr>
+      <tr><td>Active tab</td><td>When you click the icon, it can see the address of that one tab, at that moment, so it can show that shop's codes.</td></tr>
+      <tr><td>Storage</td><td>Remembers the shop list and the code you last copied, on your computer.</td></tr>
+      <tr><td>Alarms</td><td>Refreshes the shop list every six hours.</td></tr>
+      <tr><td>Scripting</td><td>Lets it add its banner to a page. The extension only does that on listed shops when alerts are on. (After you click the icon, Chrome would also let it add to that tab; it doesn't.)</td></tr>
+    </table>
+    <p><strong>Only if you turn on alerts</strong>, Chrome asks you to allow two more:</p>
+    <table>
+      <tr><th>Permission</th><th>What it allows</th></tr>
+      <tr><td>Site access ("read and change your data on all websites")</td><td>Lets it see each site's address, to check it against the shop list on your computer, and show its banner on listed shops' cart and checkout pages. It doesn't read pages, and other sites' addresses are never sent. Chrome's wording is broader than what the code does, which is why the code is public.</td></tr>
+      <tr><td>Notifications</td><td>Asks "did it work?" if you leave a shop before answering.</td></tr>
+    </table>
+    <p>You can turn alerts off at any time from the icon, which hands those permissions back. It never asks for your history, cookies, downloads or passwords, and it can't watch or redirect your web traffic.</p>
+  </section>
+
+  <section>
+    <h2>Built-in safeguards</h2>
+    <ul class="steps">
+      <li><strong>It checks what our own server sends.</strong> A code has to be plain letters and numbers, shoppers' free-text descriptions aren't shown, and the banner only shows codes that other shoppers confirmed or that the shop published itself. A broken-into server still couldn't read your pages or your other browsing, but it could show wrong or misleading codes and choose which shops count as listed.</li>
+      <li><strong>The server checks everything too.</strong> Every request is validated and rate-limited, and only the extension (not other websites) can send votes from your browser.</li>
+      <li><strong>Harder to game.</strong> A code only shows as "works for others" after 👍 from two different internet connections, neither of them the sharer's, and each connection gets one vote per code. Someone with many connections could still cheat, so treat codes as likely, not guaranteed.</li>
+      <li><strong>Walled off from the shop's page.</strong> The banner lives in a closed part of the page that the shop's code can't read, and it ignores clicks a website fakes. A page's own code could still hide or move it.</li>
+      <li><strong>Encrypted.</strong> Everything travels over HTTPS, and this site sends strict browser security headers.</li>
+      <li><strong>Nothing worth stealing.</strong> There are no accounts, passwords or payment details on our side. See the <a href="/privacy">privacy page</a> for exactly what's kept and for how long.</li>
+      <li><strong>Hands off affiliate links.</strong> It never touches links or cookies on the sites you visit, so the creator who sent you still gets paid.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Where it runs</h2>
+    <p>The website, the code list and the votes run on Cloudflare (Workers and its D1 database), which also handles encryption and protection against attacks.</p>
+  </section>
+
+  <section>
+    <h2>What's not done yet</h2>
+    <p>We'd rather tell you than have you find out:</p>
+    <ul class="steps">
+      <li>It isn't in the Chrome Web Store yet. Installing it by hand skips Google's review and automatic updates. If you install from the zip, you can compare its SHA-256 fingerprint with the one on the <a href="https://github.com/hotfixlife/good-codes/releases">GitHub release</a>.</li>
+      <li>It hasn't had an independent security review. We did run our own adversarial review and published the findings and fixes in the repository.</li>
+    </ul>
+    <p class="muted">Last updated 18 October 2026.</p>
+  </section>
+
+  <footer><a href="/">Back to Good Codes</a> · <a href="/privacy">Privacy</a> · <a href="https://github.com/hotfixlife/good-codes">Source code</a></footer>
+</div>
+</body>
+</html>

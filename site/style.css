@@ -1,0 +1,42 @@
+:root {
+  --bg: #fbfaf7; --fg: #1d1d1b; --muted: #5f5d57; --card: #ffffff; --line: #e4e1d8;
+  --accent: #1f7a4d; --accent-fg: #ffffff; --accent-soft: #e5f2ea;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #141513; --fg: #ecebe6; --muted: #a3a19a; --card: #1d1f1c; --line: #33352f;
+    --accent: #4cc285; --accent-fg: #0d1a12; --accent-soft: #1d3326;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg);
+  font: 17px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+header { padding: 20px 0; display: flex; align-items: center; gap: 10px; font-weight: 700; }
+.logo { width: 28px; height: 28px; border-radius: 8px; background: var(--accent); color: var(--accent-fg);
+  display: grid; place-items: center; font-size: 15px; }
+.tag { font-size: 12px; font-weight: 600; border: 1px solid var(--line); border-radius: 99px; padding: 1px 8px; color: var(--muted); }
+h1 { font-size: clamp(30px, 6vw, 46px); line-height: 1.1; margin: 28px 0 14px; letter-spacing: -0.02em; }
+.lede { font-size: 19px; color: var(--muted); margin: 0 0 22px; }
+.muted { color: var(--muted); }
+a { color: var(--accent); }
+.cta, .ghost { display: inline-block; border-radius: 10px; padding: 11px 20px; font-weight: 650; text-decoration: none; margin: 0 8px 8px 0; }
+.cta { background: var(--accent); color: var(--accent-fg); }
+.ghost { border: 1px solid var(--line); color: var(--fg); }
+a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+section { padding: 30px 0; border-top: 1px solid var(--line); }
+h2 { font-size: 24px; margin: 0 0 14px; letter-spacing: -0.01em; }
+h3 { margin: 0 0 6px; font-size: 17px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; }
+.card p { margin: 0; color: var(--muted); font-size: 15.5px; }
+.steps { padding-left: 22px; } .steps li { margin: 8px 0; }
+code { background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; font-size: 15px; overflow-wrap: anywhere; }
+.banner { background: var(--accent-soft); border-radius: 12px; padding: 14px 16px; margin-top: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 15.5px; }
+th, td { text-align: left; vertical-align: top; padding: 8px 10px 8px 0; border-bottom: 1px solid var(--line); }
+footer { padding: 30px 0 50px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
+header img { border-radius: 6px; }
+.more { color: var(--muted); font-size: 15.5px; }
+.more strong { color: var(--fg); }
+.more p { margin: 0 0 12px; }

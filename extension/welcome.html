@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Good Codes is installed</title>
+<link rel="icon" href="icons/on-32.png">
+<style>
+  :root { --bg:#fbfaf7; --fg:#1d1d1b; --muted:#5f5d57; --line:#e4e1d8; --accent:#1f7a4d; --accent-fg:#fff; --soft:#e5f2ea; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#141513; --fg:#ecebe6; --muted:#a3a19a; --line:#33352f; --accent:#4cc285; --accent-fg:#0d1a12; --soft:#1d3326; } }
+  body { margin:0; background:var(--bg); color:var(--fg); font:17px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif; }
+  .wrap { max-width:640px; margin:0 auto; padding:24px 16px 48px; }
+  h1 { font-size:30px; margin:8px 0 18px; display:flex; align-items:center; gap:10px; }
+  h1 img { width:36px; height:36px; }
+  h2 { font-size:20px; margin:28px 0 10px; }
+  ol { padding-left:22px; } li { margin:10px 0; }
+  .cta { font:inherit; font-weight:650; background:var(--accent); color:var(--accent-fg); border:0; border-radius:10px; padding:9px 18px; cursor:pointer; }
+  .ok { background:var(--soft); border-radius:10px; padding:8px 12px; display:inline-block; }
+  .more { border-top:1px solid var(--line); margin-top:30px; color:var(--muted); font-size:15.5px; }
+  .more p { margin:10px 0; } a { color:var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1><img src="icons/on-128.png" alt=""> Good Codes is installed</h1>
+
+  <h2>Here's all you need to know</h2>
+  <ol>
+    <li><strong>Pin it:</strong> click the puzzle piece next to the address bar, then the pin next to Good Codes.</li>
+    <li><strong>Turn on alerts</strong> so we can tell you when a shop has codes, and ask if they worked:<br>
+      <span id="alerts"><button class="cta" id="on">Turn on alerts</button></span></li>
+    <li><strong>At checkout:</strong> copy a code, paste it into the shop's discount box, and tell us if it worked.</li>
+  </ol>
+
+  <div class="more">
+    <h2>Other stuff you might want to know, and the legal stuff</h2>
+    <p><strong>What alerts allow.</strong> Good Codes checks the address of each site you visit against its list of shops, on your computer. Only listed shops' names are ever sent, when you're at their checkout. It shows a small banner on those shops' cart and checkout pages, and never reads the page. Chrome's permission prompt sounds broader than this; the code is public if you want to check.</p>
+    <p><strong>Without alerts</strong> it can't see the sites you visit at all. The icon still turns green on shops with codes; click it to see them.</p>
+    <p><strong>Free while we test it.</strong> We'll probably charge later, most likely a small fee. We'll ask first; nobody gets charged without agreeing. <span id="bmc-wrap" hidden>If it saves you something, you can <a id="bmc" target="_blank" rel="noopener">buy us a coffee</a>.</span></p>
+    <p><strong>Affiliate links.</strong> Good Codes never touches them, so the creator who sent you to a shop still gets paid.</p>
+    <p>Not affiliated with any retailer. Codes are shared by shoppers and may not work. <a id="privacy" target="_blank" rel="noopener">Privacy</a> · <a id="security" target="_blank" rel="noopener">Security</a> · <a href="https://github.com/hotfixlife/good-codes" target="_blank" rel="noopener">Source code</a></p>
+  </div>
+</div>
+<script type="module" src="welcome.js"></script>
+</body>
+</html>

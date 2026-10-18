@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Good Codes: promo codes that actually work</title>
+<meta name="description" content="A free browser extension that tells you when a shop has promo codes other shoppers say actually work.">
+<link rel="stylesheet" href="/style.css">
+<link rel="icon" href="/icon.png">
+</head>
+<body>
+<div class="wrap">
+  <header><img src="/icon.png" alt="" width="28" height="28"> Good Codes <span class="tag">beta</span></header>
+
+  <h1>Promo codes that actually work.</h1>
+
+  <section>
+    <h2>Here's all you need to know</h2>
+    <p>Good Codes tells you when a shop has promo codes that other shoppers say work. Copy one, paste it at checkout, and tell us if it worked. It's free.</p>
+    <ol class="steps">
+      <li><a class="cta" href="/downloads/goodcodes-extension.zip" download>Download Good Codes</a> and unzip it.</li>
+      <li>Go to <code>chrome://extensions</code>, turn on <strong>Developer mode</strong>, click <strong>Load unpacked</strong>, and pick the <code>goodcodes-extension</code> folder.</li>
+      <li>Follow the short welcome page that opens.</li>
+    </ol>
+    <p><a href="/demo/">Try it on our demo checkout</a> once it's installed.</p>
+  </section>
+
+  <section class="more">
+    <h2>Other stuff you might want to know, and the legal stuff</h2>
+    <p><strong>Why the install is manual.</strong> Good Codes isn't in the Chrome Web Store yet, so for now it installs from the zip. Keep the unzipped folder: moving or deleting it removes the extension. It also works in Edge (<code>edge://extensions</code>) and Brave.</p>
+    <p><strong>How codes are checked.</strong> After you use a code, Good Codes asks whether it worked. Codes people confirm rise to the top, and codes that stop working sink. A code only shows as "works for others" once someone other than the person who shared it says it worked.</p>
+    <p><strong>Your privacy.</strong> Alerts are optional. With them on, the extension checks the sites you visit against its list of shops on your computer; only listed shops' names are ever sent. With them off, it can't see the sites you visit at all. No accounts, no ads, no selling data. Full details: <a href="/privacy">privacy</a> and <a href="/security">security</a>, and all the <a href="https://github.com/hotfixlife/good-codes">source code is public</a>.</p>
+    <p><strong>Affiliate links.</strong> Good Codes never sets, changes or removes affiliate links or cookies, so the creator who sent you to a shop still gets paid.</p>
+    <p><strong>Free while we test it.</strong> We'll probably charge later, most likely a small fee. We'll tell you and ask first; nobody gets charged without agreeing. <span id="bmc-wrap" hidden>If it saved you something: <a id="bmc" href="__BMC__" target="_blank" rel="noopener">☕ buy us a coffee</a>.</span></p>
+    <p><strong>The fine print.</strong> Codes are shared by shoppers and aren't guaranteed to work. Good Codes is an independent early test and isn't affiliated with, or endorsed by, any retailer. Shop names belong to their owners.</p>
+  </section>
+
+  <footer><a href="/privacy">Privacy</a> · <a href="/security">Security</a> · <a href="https://github.com/hotfixlife/good-codes">Source code</a></footer>
+</div>
+<script>
+  if (document.getElementById("bmc").getAttribute("href").startsWith("https://")) document.getElementById("bmc-wrap").hidden = false;
+</script>
+</body>
+</html>
